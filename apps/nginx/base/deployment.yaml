@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bpjstk-nginx
+  namespace: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bpjstk-nginx
+  template:
+    metadata:
+      labels:
+        app: bpjstk-nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nkp-10-54-60-16.sslip.nutanixdemo.com:5000/library/bpjstk-nginx:v1
+        ports:
+        - containerPort: 80
